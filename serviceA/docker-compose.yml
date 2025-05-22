@@ -1,0 +1,25 @@
+services:
+  servicea:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8060:8080"
+  postgres:
+    image: postgres:17.5
+    restart: "no"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_secret
+      POSTGRES_DB: service_a
+  rabbitmq:
+    image: rabbitmq:4.1.0
+    restart: "no"
+    ports:
+      - "5672:5672"
+volumes:
+  postgres_data:
