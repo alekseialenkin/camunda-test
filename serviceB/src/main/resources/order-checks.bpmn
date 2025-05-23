@@ -15,15 +15,17 @@
 
     <exclusiveGateway id="gateway" />
 
-    <!-- Save Order if shouldSave=true -->
     <sequenceFlow id="toSave" sourceRef="gateway" targetRef="saveOrder">
       <conditionExpression xsi:type="tFormalExpression">
         =shouldSave = true
       </conditionExpression>
     </sequenceFlow>
 
-    <!-- End if shouldSave=false -->
-    <sequenceFlow id="toEnd" sourceRef="gateway" targetRef="end" />
+    <sequenceFlow id="toReject" sourceRef="gateway" targetRef="logRejection">
+      <conditionExpression xsi:type="tFormalExpression">
+        =shouldSave = false
+      </conditionExpression>
+    </sequenceFlow>
 
     <serviceTask id="saveOrder" name="Save Order">
       <extensionElements>
@@ -31,11 +33,17 @@
       </extensionElements>
     </serviceTask>
 
+    <serviceTask id="logRejection" name="Log Rejection">
+      <extensionElements>
+        <zeebe:taskDefinition type="log-rejection" />
+      </extensionElements>
+    </serviceTask>
+
     <endEvent id="end" />
 
-    <!-- Sequence Flows -->
     <sequenceFlow id="flow1" sourceRef="start" targetRef="checkOrder" />
     <sequenceFlow id="flow2" sourceRef="checkOrder" targetRef="gateway" />
     <sequenceFlow id="flow3" sourceRef="saveOrder" targetRef="end" />
+    <sequenceFlow id="flow4" sourceRef="logRejection" targetRef="end" />
   </process>
 </definitions>

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Getter
 @Setter
@@ -17,4 +19,11 @@ public class Request extends BaseEntity {
     private String errorReason;
     @OneToOne
     private Order order;
+
+    public Request(UUID id, Status status, String errorReason, Order order) {
+        super(id);
+        this.status = status;
+        this.errorReason = errorReason;
+        this.order = order;
+    }
 }
