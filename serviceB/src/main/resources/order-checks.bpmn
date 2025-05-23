@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  targetNamespace="http://camunda.io/schema/1.0">
+
+  <process id="order-process" isExecutable="true">
+    <startEvent id="start" />
+    <serviceTask id="checkOrder" name="Check Order">
+      <extensionElements>
+        <zeebe:taskDefinition type="check-order" />
+      </extensionElements>
+    </serviceTask>
+
+    <exclusiveGateway id="gateway" />
+
+    <!-- Save Order if shouldSave=true -->
+    <sequenceFlow id="toSave" sourceRef="gateway" targetRef="saveOrder">
+      <conditionExpression xsi:type="tFormalExpression">
+        =shouldSave = true
+      </conditionExpression>
+    </sequenceFlow>
+
+    <!-- End if shouldSave=false -->
+    <sequenceFlow id="toEnd" sourceRef="gateway" targetRef="end" />
+
+    <serviceTask id="saveOrder" name="Save Order">
+      <extensionElements>
+        <zeebe:taskDefinition type="save-order" />
+      </extensionElements>
+    </serviceTask>
+
+    <endEvent id="end" />
+
+    <!-- Sequence Flows -->
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="checkOrder" />
+    <sequenceFlow id="flow2" sourceRef="checkOrder" targetRef="gateway" />
+    <sequenceFlow id="flow3" sourceRef="saveOrder" targetRef="end" />
+  </process>
+</definitions>

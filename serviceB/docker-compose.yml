@@ -1,0 +1,59 @@
+version: '3.7'
+services:
+  #  service-b:
+  #    build:
+  #      dockerfile: Dockerfile
+  #      context: .
+  #    ports:
+  #      - "8050:8080"
+  postgres:
+    image: postgres:17.5
+    restart: "no"
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_secret
+      POSTGRES_DB: service_b
+  rabbitmq:
+    image: rabbitmq:4.1.0
+    restart: "no"
+    ports:
+      - "5672:5672"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+  zeebe:
+    image: camunda/zeebe:8.7.0
+    environment:
+      - ZEEBE_LOG_LEVEL=info
+      - ZEEBE_GATEWAY_NETWORK_HOST=0.0.0.0
+      - ZEEBE_GATEWAY_CLUSTER_HOST=0.0.0.0
+    ports:
+      - "26500:26500"  # gRPC
+      - "9600:9600"    # monitoring (Prometheus)
+  operate:
+    image: camunda/operate:8.7.0
+    depends_on:
+      - zeebe
+      - elasticsearch
+    environment:
+      - CAMUNDA_OPERATE__ZEEBE__GATEWAY_ADDRESS=zeebe:26500
+      - CAMUNDA_OPERATE__ELASTICSEARCH__URL=http://elasticsearch:9200
+      - CAMUNDA_OPERATE__AUTH__ENABLED=false
+    ports:
+      - "8080:8080"  # Operate UI
+volumes:
+  postgres_data:
