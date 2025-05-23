@@ -24,7 +24,7 @@ public interface OrderMapper {
     }
 
     @Mapping(target = "orderId", source = "id")
-    GetOrderResponse toGetOrderResponseList(Order byOrderId);
+    GetOrderResponse toGetOrderResponse(Order byOrderId);
 
     List<GetOrderResponse> toGetOrderResponseList(List<Order> byClientId);
 }

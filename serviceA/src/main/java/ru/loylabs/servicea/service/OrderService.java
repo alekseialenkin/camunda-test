@@ -1,14 +1,13 @@
 package ru.loylabs.servicea.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.loylabs.servicea.JsonUtil;
 import ru.loylabs.servicea.dto.CreateOrderRequest;
 import ru.loylabs.servicea.exceptions.OrderNotFoundException;
 import ru.loylabs.servicea.mapper.OrderMapper;
 import ru.loylabs.servicea.model.Order;
+import ru.loylabs.servicea.model.Request;
 import ru.loylabs.servicea.rabbitmq.RabbitProducer;
 import ru.loylabs.servicea.repository.OrderRepository;
 
@@ -21,6 +20,7 @@ import java.util.UUID;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
+    private final RabbitProducer rabbitProducer;
 
     @Transactional
     public Order create(CreateOrderRequest request) {
@@ -43,5 +43,9 @@ public class OrderService {
 
     public List<Order> findByDate(LocalDate date) {
         return orderRepository.findAllByDateWithItems(date);
+    }
+
+    public Request getFromServiceB(UUID orderId) {
+        return rabbitProducer.sendGetOrder(orderId);
     }
 }

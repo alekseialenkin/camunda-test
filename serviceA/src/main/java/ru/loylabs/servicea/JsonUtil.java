@@ -16,4 +16,13 @@ public class JsonUtil {
             throw new RuntimeException(e);
         }
     }
+
+    public <T> T deserialize(String json, Class<T> clazz) {
+        try {
+            return objectMapper.readValue(json, clazz);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

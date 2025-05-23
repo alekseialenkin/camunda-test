@@ -59,12 +59,12 @@ public class OrderController {
 
     @GetMapping("/{orderId}")
     public GetOrderResponse getOrder(@PathVariable(name = "orderId") UUID orderId) {
-        return orderMapper.toGetOrderResponseList(orderService.findByOrderId(orderId));
+        return orderMapper.toGetOrderResponse(orderService.findByOrderId(orderId));
     }
 
     @GetMapping("/order/{orderNumber}")
     public GetOrderResponse getOrderByOrderNumber(@PathVariable(name = "orderNumber") Long orderNumber) {
-        return orderMapper.toGetOrderResponseList(orderService.findByOrderNumber(orderNumber));
+        return orderMapper.toGetOrderResponse(orderService.findByOrderNumber(orderNumber));
     }
 
     @GetMapping("/client/{clientId}")
@@ -75,5 +75,10 @@ public class OrderController {
     @GetMapping("/date")
     public List<GetOrderResponse> getOrderByDate(@RequestParam(name = "date") LocalDate date) {
         return orderMapper.toGetOrderResponseList(orderService.findByDate(date));
+    }
+
+    @GetMapping("/camunda/{orderId}")
+    public Request getCamundaOrder(@PathVariable(name = "orderId") UUID orderId) {
+        return orderService.getFromServiceB(orderId);
     }
 }

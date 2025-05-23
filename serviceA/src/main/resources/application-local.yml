@@ -3,7 +3,7 @@ spring:
     name: serviceA
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/service_a
+    url: jdbc:postgresql://localhost:5433/service_a
     username: postgres
     password: postgres_secret
   rabbitmq:
@@ -15,4 +15,5 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
-
+server:
+  port: 7689

@@ -5,47 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff8f8675-828c-49b5-9889-bafe9c67a8aa" name="Changes" comment="init service a">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/JsonUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/config/RabbitQueueConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/controller/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/dto/CreateItemRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/dto/CreateOrderRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/dto/CreateOrderResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/dto/GetItemResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/dto/GetOrderResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/dto/GetStatusResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/exceptions/OrderNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/exceptions/RequestNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/exceptions/WebExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/mapper/ItemMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/mapper/OrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/mapper/RequestMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/model/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/model/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/model/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/model/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/model/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/rabbitmq/RabbitProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/repository/ItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/repository/OrderRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/repository/RequestRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/service/ItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/service/RequestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/amplicode-jpa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/amplicode-jpa.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serviceA.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/loylabs/servicea/ServiceAApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/config/RabbitQueueConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/config/RabbitQueueConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/mapper/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/rabbitmq/RabbitProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/rabbitmq/RabbitProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,25 +83,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build serviceA.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.serviceA [clean build].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ServiceAApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/aleksei/backend-new&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Gradle.Build serviceA.executor": "Run",
+    "Gradle.serviceA [clean build].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ServiceAApplication.executor": "Debug",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/aleksei/backend-new",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ru.loylabs.servicea.exceptions" />
@@ -214,6 +183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747910150970</updated>
       <workItem from="1747910152268" duration="11414000" />
+      <workItem from="1747991168554" duration="4664000" />
     </task>
     <task id="LOCAL-00001" summary="init service a">
       <option name="closed" value="true" />
@@ -229,16 +199,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init service a" />
     <option name="LAST_COMMIT_MESSAGE" value="init service a" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/loylabs/servicea/service/RequestService.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
