@@ -1,0 +1,120 @@
+version: '3.7'
+
+networks:
+  common-net:
+    driver: bridge
+
+services:
+  servicea:
+    build:
+      context: ./serviceA
+      dockerfile: Dockerfile
+    container_name: service-a
+    ports:
+      - "8060:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+    networks:
+      - common-net
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres_secret
+      SPRING_RABBITMQ_HOST: rabbitmq
+
+  serviceb:
+    build:
+      context: ./serviceB
+      dockerfile: Dockerfile
+    container_name: service-b
+    ports:
+      - "8050:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+    networks:
+      - common-net
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres_secret
+      SPRING_RABBITMQ_HOST: rabbitmq
+
+  postgres:
+    image: postgres:17.5
+    container_name: postgres
+    restart: "no"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_secret
+      POSTGRES_DB: appdb
+    networks:
+      - common-net
+
+  rabbitmq:
+    image: rabbitmq:4.1.0
+    container_name: rabbitmq
+    restart: "no"
+    ports:
+      - "5672:5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - common-net
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    networks:
+      - common-net
+
+  zeebe:
+    image: camunda/zeebe:8.7.0
+    container_name: zeebe
+    environment:
+      - ZEEBE_LOG_LEVEL=info
+      - ZEEBE_GATEWAY_NETWORK_HOST=0.0.0.0
+      - ZEEBE_GATEWAY_CLUSTER_HOST=0.0.0.0
+    ports:
+      - "26500:26500"
+      - "9600:9600"
+    networks:
+      - common-net
+
+  operate:
+    image: camunda/operate:8.7.0
+    container_name: operate
+    depends_on:
+      - zeebe
+      - elasticsearch
+    environment:
+      - CAMUNDA_OPERATE__ZEEBE__GATEWAY_ADDRESS=zeebe:26500
+      - CAMUNDA_OPERATE__ELASTICSEARCH__URL=http://elasticsearch:9200
+      - CAMUNDA_OPERATE__AUTH__ENABLED=false
+    ports:
+      - "8080:8080"
+    networks:
+      - common-net
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  es_data:
