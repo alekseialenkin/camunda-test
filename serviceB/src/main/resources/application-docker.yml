@@ -1,3 +1,22 @@
 spring:
   application:
     name: serviceB
+  datasource:
+    url: jdbc:postgresql://postgres:5432/service_b
+    username: postgres
+    password: postgres_secret
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+camunda:
+  client:
+    mode: selfmanaged
+    zeebe:
+      grpc-address: http://zeebe:26500
+      enabled: true
